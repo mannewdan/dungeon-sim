@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Rubik, sans-serif;
+  background-color: hsl(0deg, 0%, 14%);
+  color: hsl(0deg, 0%, 96%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: Karla, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  font-weight: 400;
+}/*# sourceMappingURL=main.css.map */
