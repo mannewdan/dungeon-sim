@@ -7,8 +7,10 @@ function App() {
 
   return (
     <main className={`app ${dark ? "dark" : "light"}`}>
-      <Grid />
-      <Control />
+      <div className="app__content">
+        <Grid />
+        <Control />
+      </div>
 
       {/* debug */}
       <br></br>
@@ -17,7 +19,6 @@ function App() {
       {!dark && "Light "}
       <button onClick={toggleDark}>Toggle Dark</button>
       {/* debug end */}
-
     </main>
   )
 }

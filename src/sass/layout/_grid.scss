@@ -1,0 +1,6 @@
+@use "../globals/themes" as *;
+
+.grid {
+  grid-area: g;
+  background-color: var(--background-secondary);
+}

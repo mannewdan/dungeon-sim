@@ -1,16 +1,30 @@
-@use "defaults";
-@use "themes";
+@forward "globals";
+@forward "layout";
+@use "./globals/themes" as *;
+@use "./globals/breakpoints" as *;
 
 .app {
   height: 100vh;
-}
 
-.dark {
-  background-color: hsl(0, 0%, 14%);
-  color: hsl(0, 0%, 96%);
-}
+  &__content {
+    width: calc((100% - 40px));
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
 
-.light {
-  background-color: hsl(0, 0%, 96%);
-  color: hsl(0, 0%, 14%);
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+      "c"
+      "g";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    @media (min-width: $bp-medium) {
+      grid-template-areas:
+        "g c";
+      grid-template-columns: 2fr minmax(200px, 1fr);
+      grid-template-rows: auto;
+    }
+  }
 }

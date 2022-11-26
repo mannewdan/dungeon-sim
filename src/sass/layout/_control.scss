@@ -1,0 +1,8 @@
+@use "../globals/themes" as *;
+
+.control {
+  grid-area: c;
+  width: 100%;
+  height: 100px;
+  background-color: $accent;
+}
