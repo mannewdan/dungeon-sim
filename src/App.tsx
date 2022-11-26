@@ -1,4 +1,4 @@
-import { Window } from "./components/Window"
+import { Grid } from "./components/Grid"
 import { Control } from "./components/Control"
 import { useDungeonContext } from "./context/DungeonContext"
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <main className={`app ${dark ? "dark" : "light"}`}>
-      <Window />
+      <Grid />
       <Control />
 
       {/* debug */}
