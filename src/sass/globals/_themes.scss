@@ -1,6 +1,10 @@
 $black: hsl(0, 0%, 14%);
 $white: hsl(0, 0%, 96%);
 $accent: #786fa6;
+$accent-dark: #453e69;
+$accent-secondary: #f3a683;
+$accent-tertiary: #f7d794;
+$accent-text: $white;
 
 .dark {
   background-color: $black;

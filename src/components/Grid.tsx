@@ -1,9 +1,14 @@
 
-export function Grid() {
+type GridProps = {
+  size: number[]
+}
 
+export function Grid({ size }: GridProps) {
+
+  //render
   return (
     <div className="grid">
-      Grid
+      {size[0]}x{size[1]}
     </div>
   )
 }

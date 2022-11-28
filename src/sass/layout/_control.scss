@@ -3,6 +3,55 @@
 .control {
   grid-area: c;
   width: 100%;
-  height: 100px;
+  height: 100%;
+  padding: 10px;
   background-color: $accent;
+  color: $accent-text;
+  border-radius: 8px;
+
+  & button {
+    background-color: $accent-dark;
+    color: $white;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border: 1px solid $white;
+    cursor: pointer;
+
+    transition: background-color 100ms, color 100ms, border-color 100ms;
+
+    &:hover {
+      color: $black;
+      background-color: $accent-secondary;
+    }
+
+    &:active {
+      color: $black;
+      background-color: lighten($accent-secondary, 10%);
+    }
+
+    &.active {
+      color: $black;
+      background-color: $accent-tertiary;
+
+      &:hover {
+        background-color: lighten($accent-tertiary, 10%);
+      }
+    }
+  }
+
+  &__size {
+    text-align: center;
+
+    & h3 {
+      margin-bottom: 6px;
+    }
+
+    &--buttons {
+      display: grid;
+      gap: 4px;
+      grid-template-columns: 1fr 1fr;
+
+    }
+  }
 }
