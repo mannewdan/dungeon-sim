@@ -4,4 +4,13 @@
   grid-area: g;
   background-color: var(--background-secondary);
 
+  display: grid; //columns defined in Grid.tsx
+  gap: 1px;
+
+  &__tile {
+    aspect-ratio: 1;
+    border-radius: 3px;
+
+    background-color: hsl(200, 32%, 54%); //placeholder
+  }
 }

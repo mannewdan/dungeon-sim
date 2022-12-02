@@ -4,7 +4,7 @@ import { Control } from "./components/Control"
 import { useDungeonContext } from "./context/DungeonContext"
 
 function App() {
-  const sizeOptions = [[9, 9], [9, 12], [12, 15], [15, 18]];
+  const sizeOptions = [[7, 5], [9, 6], [12, 8], [12, 10]];
   const { dark, toggleDark } = useDungeonContext();
   const [size, setSize] = React.useState(sizeOptions[0]);
 
@@ -31,9 +31,18 @@ function App() {
     return true;
   }
 
+  //theme on <body>
+  React.useEffect(() => {
+    const className = dark ? "dark" : "light";
+    document.body.classList.add(className);
+    return () => {
+      document.body.classList.remove(className);
+    }
+  }, [dark]);
+
   //render
   return (
-    <main className={`app ${dark ? "dark" : "light"}`}>
+    <main className="app">
       <div className="app__content">
         <Grid
           size={size}

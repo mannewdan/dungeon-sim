@@ -85,6 +85,13 @@ img {
 .grid {
   grid-area: g;
   background-color: var(--background-secondary);
+  display: grid;
+  gap: 1px;
+}
+.grid__tile {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background-color: hsl(200deg, 32%, 54%);
 }
 
 .app {
