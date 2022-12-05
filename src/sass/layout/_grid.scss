@@ -1,16 +1,19 @@
 @use "../globals/themes" as *;
+@use "../globals/breakpoints" as *;
 
 .grid {
   grid-area: g;
   background-color: var(--background-secondary);
 
   display: grid; //columns defined in Grid.tsx
-  gap: 1px;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 8px;
 
   &__tile {
     aspect-ratio: 1;
     border-radius: 3px;
 
-    background-color: hsl(200, 32%, 54%); //placeholder
+    background-color: var(--background-tile);
   }
 }

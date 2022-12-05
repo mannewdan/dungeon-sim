@@ -2,6 +2,7 @@ $black: hsl(0, 0%, 14%);
 $white: hsl(0, 0%, 96%);
 $accent: #786fa6;
 $accent-dark: #453e69;
+$accent-darker: #343146;
 $accent-secondary: #f3a683;
 $accent-tertiary: #f7d794;
 $accent-text: $white;
@@ -10,10 +11,12 @@ $accent-text: $white;
   background-color: $black;
   color: $white;
   --background-secondary: hsl(0, 0%, 22%);
+  --background-tile: hsl(0, 0%, 18%);
 }
 
 .light {
   background-color: $white;
   color: $black;
   --background-secondary: hsl(0, 0%, 86%);
+  --background-tile: hsl(0, 0%, 94%);
 }
