@@ -2,20 +2,32 @@ import React from "react";
 import { Grid } from "./components/Grid"
 import { Control } from "./components/Control"
 import { useDungeonContext } from "./context/DungeonContext"
+import data from "./data/gridDefaults.json"
 
 function App() {
   const sizeOptions = [[7, 5], [9, 6], [12, 8], [12, 10]];
   const { dark, toggleDark } = useDungeonContext();
-  const [size, setSize] = React.useState(sizeOptions[0]);
+  const [grid, setGrid] = React.useState(data[0].grid);
 
   //functions
   function setGridSize(index: number) {
-    if (index < 0 || index > sizeOptions.length - 1) {
+    //check index
+    if (index < 0 || 
+        index > sizeOptions.length - 1 || 
+        index > data.length - 1) {
       console.log("An invalid index was given to setGridSize");
+      return;
+    }      
+    //check grid
+    const newGrid = data[index].grid;
+    if (!Array.isArray(newGrid) || 
+        newGrid.length !== sizeOptions[index][1] ||
+        !newGrid.every(item => item.length === sizeOptions[index][0])) { 
+      console.log(`Data at index ${index} is not an array or has incorrect dimensions`);
       return;
     }
 
-    setSize(sizeOptions[index]);
+    setGrid(newGrid);
   }
   function isActive(index: number): boolean {
     if (index < 0 || index > sizeOptions.length - 1) {
@@ -23,10 +35,9 @@ function App() {
     }
 
     const option = sizeOptions[index];
-    if (option.length !== size.length) return false;
-    for (let i = 0; i < option.length; i++) {
-      if (option[i] !== size[i]) return false;
-    }
+    if (option[1] !== grid.length || !grid.every(item => item.length === option[0])) { 
+      return false;
+    }    
 
     return true;
   }
@@ -45,7 +56,7 @@ function App() {
     <main className="app">
       <div className="app__content">
         <Grid
-          size={size}
+          grid={grid}
         />
         <Control
           sizeOptions={sizeOptions}

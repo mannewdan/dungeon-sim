@@ -1,16 +1,23 @@
+import { Tile } from "./Tile"
 
 type GridProps = {
-  size: number[]
+  grid: Array<Array<number>>
 }
 
-export function Grid({ size }: GridProps) {
+export function Grid({ grid }: GridProps) {
 
-  const totalTiles = size[0] * size[1];
-  const tileElements = [];
-  for (let i = 0; i < totalTiles; i++) {
-    tileElements.push(
-      <div className="grid__tile"></div>
-    )
+  const tileElements = [];  
+  let i = 0;
+  for (let h = 0; h < grid.length; h++) { 
+    for (let w = 0; w < grid[h].length; w++) { 
+      tileElements.push(
+        <Tile
+          key={i}
+          type={grid[h][w]}
+        />
+      )
+      i++;
+    }
   }
 
   //render
@@ -18,7 +25,7 @@ export function Grid({ size }: GridProps) {
     <div
       className="grid"
       style={{
-        gridTemplateColumns: `repeat(${size[0]}, 1fr)`
+        gridTemplateColumns: `repeat(${grid[0].length}, 1fr)`
       }}
     >
       {tileElements}
