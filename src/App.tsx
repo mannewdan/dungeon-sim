@@ -6,7 +6,7 @@ import data from "./data/gridDefaults.json"
 
 function App() {
   const sizeOptions = [[7, 5], [9, 6], [12, 8], [12, 10]];
-  const { dark, toggleDark } = useDungeonContext();
+  const { dark, toggleDark, toggleDebug } = useDungeonContext();
   const [grid, setGrid] = React.useState(data[0].grid);
 
   //functions
@@ -66,12 +66,10 @@ function App() {
       </div>
 
       {/* debug */}
+      <button className="debug-button" onClick={toggleDebug}>Toggle Debug</button>      
       <br></br>
-      <br></br>
-      {dark && "Dark "}
-      {!dark && "Light "}
-      <button onClick={toggleDark}>Toggle Dark</button>
-      {/* debug end */}
+      <button onClick={toggleDark}>Toggle Dark</button>  
+      {/* end debug */}      
     </main>
   )
 }

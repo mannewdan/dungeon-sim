@@ -119,4 +119,16 @@ img {
     grid-template-areas: "g c";
     grid-template-columns: minmax(560px, 100vh) minmax(200px, 0.5fr);
   }
+}
+
+.debug-button {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  border: none;
+  background: transparent;
+  color: var(--background-secondary);
+  font-weight: 700;
+  opacity: 50%;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

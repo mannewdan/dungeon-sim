@@ -5,7 +5,9 @@ type DungeonContextProps = {
 }
 type DungeonContext = {
   dark: boolean
+  debug: boolean
   toggleDark: () => void
+  toggleDebug: () => void
 }
 
 const Context = React.createContext({} as DungeonContext);
@@ -16,20 +18,28 @@ export function useDungeonContext() {
 export function DungeonContextProvider(props: DungeonContextProps) {
   const [dark, setDark] = React.useState<boolean>(() => {
     const settings = loadSettings();
-    return settings ? settings.theme : true;
+    return settings ? settings.theme : false;
   });
+  const [debug, setDebug] = React.useState<boolean>(() => { 
+    const settings = loadSettings();
+    return settings ? settings.debug : false;
+  })
 
   function toggleDark() {
     setDark(prev => !prev);
+  }
+  function toggleDebug() { 
+    setDebug(prev => !prev);
   }
 
   //save
   React.useEffect(() => {
     const settings = {
-      theme: dark
+      theme: dark,
+      debug: debug
     }
     localStorage.setItem("dungeon-settings", JSON.stringify(settings));
-  }, [dark]);
+  }, [dark, debug]);
 
   //load
   function loadSettings() {
@@ -39,9 +49,9 @@ export function DungeonContextProvider(props: DungeonContextProps) {
 
   return (
     <Context.Provider
-      value={{ dark, toggleDark }}
+      value={{ dark, toggleDark, debug, toggleDebug }}
     >
       {props.children}
     </Context.Provider>
   )
-}
+} 

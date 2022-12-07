@@ -28,3 +28,16 @@
     }
   }
 }
+
+.debug-button {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  
+  border: none;
+  background: transparent;
+  color: var(--background-secondary);
+  font-weight: 700;
+  opacity: 50%;
+  cursor: pointer;
+}
