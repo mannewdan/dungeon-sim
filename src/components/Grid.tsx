@@ -1,4 +1,5 @@
 import { Tile } from "./Tile"
+import { wallCoordinates } from "../util/textureCoordinates";
 
 type GridProps = {
   grid: Array<Array<number>>
@@ -14,6 +15,7 @@ export function Grid({ grid }: GridProps) {
         <Tile
           key={i}
           type={grid[h][w]}
+          coords={wallCoordinates(w, h, grid)}
         />
       )
       i++;

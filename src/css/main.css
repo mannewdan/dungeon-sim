@@ -90,7 +90,7 @@ img {
   grid-area: g;
   background-color: var(--background-secondary);
   display: grid;
-  gap: 2px;
+  gap: 1px;
   padding: 2px;
   border-radius: 8px;
 }

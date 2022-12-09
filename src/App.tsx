@@ -10,7 +10,7 @@ function App() {
   const [grid, setGrid] = React.useState(data[0].grid);
 
   //functions
-  function setGridSize(index: number) {
+  function setGridSize(index: number) {    
     //check index
     if (index < 0 || 
         index > sizeOptions.length - 1 || 

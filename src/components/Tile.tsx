@@ -2,16 +2,14 @@ import { useDungeonContext } from "../context/DungeonContext";
 
 type TileProps = { 
   type: number
+  coords: { x: number, y: number }
 }
 
-export function Tile ({ type } : TileProps) {   
+export function Tile ({ type, coords } : TileProps) {   
   const { debug } = useDungeonContext();
 
-  const x = 2;
-  const y = 6;
-
-  const posX = x * 100 / 7;
-  const posY = y * 100 / 7;
+  const posX = coords.x * 100 / 7;
+  const posY = 100 - coords.y * 100 / 7;
   return (
       <div className="grid__tile">
         <div className="grid__tile--ground"></div>
