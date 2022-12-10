@@ -18,19 +18,19 @@
 
     position: relative;
 
-    &--ground { 
+    &--ground {
       position: absolute;
       height: 100%;
       width: 100%;
       opacity: 50%;
       background-color: rgb(99, 84, 81);
     }
-    &--wall { 
+    &--wall {
       position: absolute;
       height: 100%;
       width: 100%;
       background-image: url(../assets/BrickWall.png);
       background-size: 800%;
     }
-  } 
+  }
 }
