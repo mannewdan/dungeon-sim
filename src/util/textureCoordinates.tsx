@@ -56,10 +56,10 @@ function typeCoordinates(
     y: Math.floor(coordIndex / 8),
   };
 }
-function inBounds(x: number, y: number, grid: Array<Array<number>>) {
-  if (y < 0) return false;
-  if (y > grid.length - 1) return false;
-  if (x < 0) return false;
-  if (x > grid[0].length - 1) return false;
+export function inBounds(w: number, h: number, grid: Array<Array<number>>) {
+  if (h < 0) return false;
+  if (h > grid.length - 1) return false;
+  if (w < 0) return false;
+  if (w > grid[0].length - 1) return false;
   return true;
 }

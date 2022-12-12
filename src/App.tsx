@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "./components/Grid";
 import { Control } from "./components/Control";
 import { useDungeonContext } from "./context/DungeonContext";
+import { inBounds } from "./util/textureCoordinates";
 import data from "./data/gridDefaults.json";
 
 function App() {
@@ -55,6 +56,17 @@ function App() {
 
     return true;
   }
+  function writeGrid(h: number, w: number, newValue: number) {
+    if (!inBounds(w, h, grid)) return -1;
+
+    setGrid((prev) =>
+      prev.map((row, h2) =>
+        row.map((cell, w2) => {
+          return h === h2 && w === w2 ? newValue : cell;
+        })
+      )
+    );
+  }
 
   //theme on <body>
   React.useEffect(() => {
@@ -69,7 +81,7 @@ function App() {
   return (
     <main className="app">
       <div className="app__content">
-        <Grid grid={grid} />
+        <Grid grid={grid} writeGrid={writeGrid} />
         <Control
           sizeOptions={sizeOptions}
           setSize={setGridSize}
