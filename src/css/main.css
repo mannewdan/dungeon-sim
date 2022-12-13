@@ -99,6 +99,7 @@ img {
   border-radius: 3px;
   background-color: var(--background-tile);
   position: relative;
+  cursor: pointer;
 }
 .grid__tile--ground {
   position: absolute;
