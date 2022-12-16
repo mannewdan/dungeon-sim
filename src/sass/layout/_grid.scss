@@ -32,6 +32,36 @@
       width: 100%;
       background-image: url(../assets/BrickWall.png);
       background-size: 800%;
+
+      animation: 125ms both shrink;
+
+      &.active {
+        animation: 125ms both pulse;
+      }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0%;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 100%;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes shrink {
+  0% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0%;
+    transform: scale(0.5);
   }
 }

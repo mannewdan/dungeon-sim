@@ -114,8 +114,61 @@ img {
   width: 100%;
   background-image: url(../assets/BrickWall.png);
   background-size: 800%;
+  -webkit-animation: 125ms both shrink;
+          animation: 125ms both shrink;
+}
+.grid__tile--wall.active {
+  -webkit-animation: 125ms both pulse;
+          animation: 125ms both pulse;
 }
 
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0%;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 100%;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0%;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 100%;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes shrink {
+  0% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0%;
+    transform: scale(0.5);
+  }
+}
+@keyframes shrink {
+  0% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0%;
+    transform: scale(0.5);
+  }
+}
 .app {
   height: 100vh;
 }
