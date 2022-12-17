@@ -3,7 +3,7 @@ import { Grid } from "./components/Grid";
 import { Control } from "./components/Control";
 import { useDungeonContext } from "./context/DungeonContext";
 import { inBounds } from "./util/textureCoordinates";
-import data from "./data/gridDefaults.json";
+import gridData from "./data/gridDefaults.json";
 
 function App() {
   const sizeOptions = [
@@ -14,7 +14,10 @@ function App() {
   ];
   const { toggleDark, toggleDebug } = useDungeonContext();
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [grid, setGrid] = React.useState(data[0].grid);
+  const [grid, setGrid] = React.useState(() => {
+    const grid = loadGrid(0);
+    return grid ? grid : gridData[0].grid;
+  });
 
   //functions
   function selectNewIndex(index: number) {
@@ -22,13 +25,13 @@ function App() {
     if (
       index < 0 ||
       index > sizeOptions.length - 1 ||
-      index > data.length - 1
+      index > gridData.length - 1
     ) {
       console.log("An invalid index was given to setGridSize");
       return;
     }
     //check grid
-    const newGrid = data[index].grid;
+    const newGrid = loadGrid(index);
     if (
       !Array.isArray(newGrid) ||
       newGrid.length !== sizeOptions[index][1] ||
@@ -53,6 +56,17 @@ function App() {
         })
       )
     );
+  }
+
+  //save
+  React.useEffect(() => {
+    localStorage.setItem(`dungeon-grid-${currentIndex}`, JSON.stringify(grid));
+  }, [grid]);
+
+  //load
+  function loadGrid(index: number) {
+    const data = localStorage.getItem(`dungeon-grid-${index}`);
+    return data ? (JSON.parse(data) as Array<Array<number>>) : null;
   }
 
   //render
