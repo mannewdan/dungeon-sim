@@ -1,17 +1,21 @@
 type ControlProps = {
   sizeOptions: Array<Array<number>>;
-  setSize: (index: number) => void;
-  isActive: (index: number) => boolean;
+  currentIndex: number;
+  selectNewIndex: (index: number) => void;
 };
 
-export function Control({ sizeOptions, setSize, isActive }: ControlProps) {
+export function Control({
+  sizeOptions,
+  currentIndex,
+  selectNewIndex,
+}: ControlProps) {
   //render
   const buttonElements = sizeOptions.map((item, index) => {
     return (
       <button
         key={index}
-        className={isActive(index) ? "active" : ""}
-        onClick={() => setSize(index)}
+        className={index === currentIndex ? "active" : ""}
+        onClick={() => selectNewIndex(index)}
       >
         {item[0]}x{item[1]}
       </button>

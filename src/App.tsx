@@ -13,10 +13,11 @@ function App() {
     [12, 10],
   ];
   const { dark, toggleDark, toggleDebug } = useDungeonContext();
+  const [currentIndex, setCurrentIndex] = React.useState(0);
   const [grid, setGrid] = React.useState(data[0].grid);
 
   //functions
-  function setGridSize(index: number) {
+  function selectNewIndex(index: number) {
     //check index
     if (
       index < 0 ||
@@ -39,22 +40,8 @@ function App() {
       return;
     }
 
+    setCurrentIndex(index);
     setGrid(newGrid);
-  }
-  function isActive(index: number): boolean {
-    if (index < 0 || index > sizeOptions.length - 1) {
-      return false;
-    }
-
-    const option = sizeOptions[index];
-    if (
-      option[1] !== grid.length ||
-      !grid.every((item) => item.length === option[0])
-    ) {
-      return false;
-    }
-
-    return true;
   }
   function writeGrid(h: number, w: number, newValue: number) {
     if (!inBounds(w, h, grid)) return -1;
@@ -84,8 +71,8 @@ function App() {
         <Grid grid={grid} writeGrid={writeGrid} />
         <Control
           sizeOptions={sizeOptions}
-          setSize={setGridSize}
-          isActive={isActive}
+          currentIndex={currentIndex}
+          selectNewIndex={selectNewIndex}
         />
       </div>
 
