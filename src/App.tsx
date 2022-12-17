@@ -27,21 +27,12 @@ function App() {
       index > sizeOptions.length - 1 ||
       index > gridData.length - 1
     ) {
-      console.log("An invalid index was given to setGridSize");
+      console.log("An invalid index was given to selectNewIndex");
       return;
     }
-    //check grid
+
     const newGrid = loadGrid(index);
-    if (
-      !Array.isArray(newGrid) ||
-      newGrid.length !== sizeOptions[index][1] ||
-      !newGrid.every((item) => item.length === sizeOptions[index][0])
-    ) {
-      console.log(
-        `Data at index ${index} is not an array or has incorrect dimensions`
-      );
-      return;
-    }
+    if (!newGrid) return;
 
     setCurrentIndex(index);
     setGrid(newGrid);
@@ -57,6 +48,12 @@ function App() {
       )
     );
   }
+  function resetGrid() {
+    const newGrid = gridData[currentIndex].grid;
+    if (!newGrid) return;
+
+    setGrid(newGrid);
+  }
 
   //save
   React.useEffect(() => {
@@ -66,7 +63,21 @@ function App() {
   //load
   function loadGrid(index: number) {
     const data = localStorage.getItem(`dungeon-grid-${index}`);
-    return data ? (JSON.parse(data) as Array<Array<number>>) : null;
+    if (!data) return null;
+
+    const grid = JSON.parse(data) as Array<Array<number>>;
+    if (
+      !Array.isArray(grid) ||
+      grid.length !== sizeOptions[index][1] ||
+      !grid.every((item) => item.length === sizeOptions[index][0])
+    ) {
+      console.log(
+        `Data at index ${index} is not an array or has incorrect dimensions`
+      );
+      return null;
+    }
+
+    return grid;
   }
 
   //render
@@ -78,6 +89,7 @@ function App() {
           sizeOptions={sizeOptions}
           currentIndex={currentIndex}
           selectNewIndex={selectNewIndex}
+          resetGrid={resetGrid}
         />
       </div>
 

@@ -2,12 +2,14 @@ type ControlProps = {
   sizeOptions: Array<Array<number>>;
   currentIndex: number;
   selectNewIndex: (index: number) => void;
+  resetGrid: () => void;
 };
 
 export function Control({
   sizeOptions,
   currentIndex,
   selectNewIndex,
+  resetGrid,
 }: ControlProps) {
   //render
   const buttonElements = sizeOptions.map((item, index) => {
@@ -27,6 +29,9 @@ export function Control({
         <h3>Grid Size</h3>
         <div className="control__size--buttons">{buttonElements}</div>
       </div>
+      <button className="control--size-reset-button" onClick={resetGrid}>
+        Reset Grid
+      </button>
     </div>
   );
 }
