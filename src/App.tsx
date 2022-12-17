@@ -12,7 +12,7 @@ function App() {
     [12, 8],
     [12, 10],
   ];
-  const { dark, toggleDark, toggleDebug } = useDungeonContext();
+  const { toggleDark, toggleDebug } = useDungeonContext();
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [grid, setGrid] = React.useState(data[0].grid);
 
@@ -54,15 +54,6 @@ function App() {
       )
     );
   }
-
-  //theme on <body>
-  React.useEffect(() => {
-    const className = dark ? "dark" : "light";
-    document.body.classList.add(className);
-    return () => {
-      document.body.classList.remove(className);
-    };
-  }, [dark]);
 
   //render
   return (

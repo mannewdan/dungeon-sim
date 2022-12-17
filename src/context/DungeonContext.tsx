@@ -47,6 +47,15 @@ export function DungeonContextProvider(props: DungeonContextProps) {
     return data ? JSON.parse(data) : null;
   }
 
+  //theme on <body>
+  React.useEffect(() => {
+    const className = dark ? "dark" : "light";
+    document.body.classList.add(className);
+    return () => {
+      document.body.classList.remove(className);
+    };
+  }, [dark]);
+
   return (
     <Context.Provider value={{ dark, toggleDark, debug, toggleDebug }}>
       {props.children}
