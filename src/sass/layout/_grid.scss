@@ -39,6 +39,9 @@
         animation: 125ms both pulse;
       }
     }
+    & .debug {
+      position: absolute;
+    }
   }
 }
 

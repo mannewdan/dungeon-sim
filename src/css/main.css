@@ -127,6 +127,9 @@ img {
   -webkit-animation: 125ms both pulse;
           animation: 125ms both pulse;
 }
+.grid__tile .debug {
+  position: absolute;
+}
 
 @-webkit-keyframes pulse {
   0% {

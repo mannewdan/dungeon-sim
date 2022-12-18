@@ -31,9 +31,8 @@ export function Tile({ type, coords, toggleWall, paint }: TileProps) {
           backgroundPositionX: `${savedCoords.posX}%`,
           backgroundPositionY: `${savedCoords.posY}%`,
         }}
-      >
-        {debug && type}
-      </div>
+      ></div>
+      {debug && <span className="debug">{type}</span>}
     </div>
   );
 }
