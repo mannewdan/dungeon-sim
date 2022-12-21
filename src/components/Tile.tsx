@@ -21,17 +21,32 @@ export function Tile({ type, coords, toggleWall, paint }: TileProps) {
   const { debug } = useDungeonContext();
 
   //render
-  const activeClass = type === 1 ? "active" : "";
+  const wallActive = type === 1 ? "active" : "";
+  const toonActive = type === 2 ? "active" : "";
+  const goalActive = type === 3 ? "active" : "";
   return (
     <div className="grid__tile" onMouseDown={toggleWall} onMouseEnter={paint}>
       <div className="grid__tile--ground"></div>
       <div
-        className={`grid__tile--wall ${activeClass}`}
+        className={`grid__tile--wall ${wallActive}`}
         style={{
           backgroundPositionX: `${savedCoords.posX}%`,
           backgroundPositionY: `${savedCoords.posY}%`,
         }}
       ></div>
+      <div
+        className={`grid__tile--toon ${toonActive}`}
+        style={{
+          backgroundImage: "url(src/assets/human.svg)",
+        }}
+      ></div>
+      <div
+        className={`grid__tile--goal ${goalActive}`}
+        style={{
+          backgroundImage: "url(src/assets/treasure.svg)",
+        }}
+      ></div>
+
       {debug && <span className="debug">{type}</span>}
     </div>
   );

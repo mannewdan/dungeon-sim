@@ -39,6 +39,20 @@
         animation: 125ms both pulse;
       }
     }
+    &--toon,
+    &--goal {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-size: 100%;
+
+      animation: 125ms both shrink;
+
+      &.active {
+        animation: 125ms both pulse;
+      }
+    }
+
     & .debug {
       position: absolute;
     }

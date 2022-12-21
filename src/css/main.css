@@ -127,6 +127,18 @@ img {
   -webkit-animation: 125ms both pulse;
           animation: 125ms both pulse;
 }
+.grid__tile--toon, .grid__tile--goal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: 100%;
+  -webkit-animation: 125ms both shrink;
+          animation: 125ms both shrink;
+}
+.grid__tile--toon.active, .grid__tile--goal.active {
+  -webkit-animation: 125ms both pulse;
+          animation: 125ms both pulse;
+}
 .grid__tile .debug {
   position: absolute;
 }
