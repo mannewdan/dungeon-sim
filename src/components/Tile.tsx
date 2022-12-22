@@ -6,9 +6,16 @@ type TileProps = {
   coords: { x: number; y: number };
   toggleWall: (e: React.SyntheticEvent) => void;
   paint: () => void;
+  currentToon: string;
 };
 
-export function Tile({ type, coords, toggleWall, paint }: TileProps) {
+export function Tile({
+  type,
+  coords,
+  toggleWall,
+  paint,
+  currentToon,
+}: TileProps) {
   const posX = (coords.x * 100) / 7;
   const posY = 100 - (coords.y * 100) / 7;
   const [savedCoords, setSavedCoords] = React.useState({ posX: 0, posY: 0 });
@@ -37,7 +44,7 @@ export function Tile({ type, coords, toggleWall, paint }: TileProps) {
       <div
         className={`grid__tile--toon ${toonActive}`}
         style={{
-          backgroundImage: "url(src/assets/human.svg)",
+          backgroundImage: `url(src/assets/${currentToon}.svg)`,
         }}
       ></div>
       <div

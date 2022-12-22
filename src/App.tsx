@@ -12,15 +12,17 @@ function App() {
     [12, 8],
     [12, 10],
   ];
+  const toonOptions = ["dwarf", "elf", "human", "faun"];
   const { toggleDark, toggleDebug } = useDungeonContext();
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentSizeIndex, setCurrentSizeIndex] = React.useState(0);
+  const [currentToonIndex, setCurrentToonIndex] = React.useState(0);
   const [grid, setGrid] = React.useState(() => {
     const grid = loadGrid(0);
     return grid ? grid : gridData[0].grid;
   });
 
   //functions
-  function selectNewIndex(index: number) {
+  function selectNewSizeIndex(index: number) {
     //check index
     if (
       index < 0 ||
@@ -34,8 +36,16 @@ function App() {
     const newGrid = loadGrid(index);
     if (!newGrid) return;
 
-    setCurrentIndex(index);
+    setCurrentSizeIndex(index);
     setGrid(newGrid);
+  }
+  function incrementToonIndex(change: number) {
+    setCurrentToonIndex((prev) => {
+      prev += change;
+      if (prev > toonOptions.length - 1) prev = 0;
+      if (prev < 0) prev = toonOptions.length - 1;
+      return prev;
+    });
   }
   function writeGrid(h: number, w: number, newValue: number) {
     if (!inBounds(w, h, grid)) return -1;
@@ -49,7 +59,7 @@ function App() {
     );
   }
   function resetGrid() {
-    const newGrid = gridData[currentIndex].grid;
+    const newGrid = gridData[currentSizeIndex].grid;
     if (!newGrid) return;
 
     setGrid(newGrid);
@@ -57,7 +67,10 @@ function App() {
 
   //save
   React.useEffect(() => {
-    localStorage.setItem(`dungeon-grid-${currentIndex}`, JSON.stringify(grid));
+    localStorage.setItem(
+      `dungeon-grid-${currentSizeIndex}`,
+      JSON.stringify(grid)
+    );
   }, [grid]);
 
   //load
@@ -84,12 +97,19 @@ function App() {
   return (
     <main className="app">
       <div className="app__content">
-        <Grid grid={grid} writeGrid={writeGrid} />
+        <Grid
+          grid={grid}
+          writeGrid={writeGrid}
+          currentToon={toonOptions[currentToonIndex]}
+        />
         <Control
           sizeOptions={sizeOptions}
-          currentIndex={currentIndex}
-          selectNewIndex={selectNewIndex}
+          currentSizeIndex={currentSizeIndex}
+          selectNewSizeIndex={selectNewSizeIndex}
           resetGrid={resetGrid}
+          toonOptions={toonOptions}
+          currentToonIndex={currentToonIndex}
+          incrementToonIndex={incrementToonIndex}
         />
       </div>
 

@@ -60,6 +60,15 @@
       grid-template-columns: 1fr 1fr;
     }
   }
+  &__toon {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid $white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &--size-reset-button {
     width: 100%;

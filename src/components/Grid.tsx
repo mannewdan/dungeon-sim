@@ -6,9 +6,10 @@ import { useMouseStatus } from "../hooks/useMouseStatus";
 type GridProps = {
   grid: Array<Array<number>>;
   writeGrid: (w: number, h: number, newValue: number) => void;
+  currentToon: string;
 };
 
-export function Grid({ grid, writeGrid }: GridProps) {
+export function Grid({ grid, writeGrid, currentToon }: GridProps) {
   const [paintType, setPaintType] = React.useState(-1);
   const [mouseIsHeld] = useMouseStatus();
 
@@ -46,6 +47,7 @@ export function Grid({ grid, writeGrid }: GridProps) {
             if (!mouseIsHeld || paintType < 0) return;
             writeGrid(h, w, paintType);
           }}
+          currentToon={currentToon}
         />
       );
       i++;

@@ -88,6 +88,14 @@ img {
   gap: 4px;
   grid-template-columns: 1fr 1fr;
 }
+.control__toon {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid hsl(0deg, 0%, 96%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .control--size-reset-button {
   width: 100%;
 }
