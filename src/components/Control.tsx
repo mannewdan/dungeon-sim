@@ -41,12 +41,25 @@ export function Control({
         </button>
       </div>
 
-      <div className="control__toon">
-        <h3>Character</h3>
-        <div className="control__toon--selector">
-          <button onClick={() => incrementToonIndex(-1)}>{"<"}</button>
-          <span>{toonName}</span>
-          <button onClick={() => incrementToonIndex(1)}>{">"}</button>
+      <div className="control__right-container">
+        <div className="control__toon">
+          <h3>Select Toon</h3>
+          <div className="control__toon--selector">
+            <button onClick={() => incrementToonIndex(-1)}>{"<"}</button>
+            <span>{toonName}</span>
+            <button onClick={() => incrementToonIndex(1)}>{">"}</button>
+          </div>
+        </div>
+
+        <hr></hr>
+
+        <div className="control__edit">
+          <h3>Edit Mode</h3>
+          <div className="control__edit--buttons">
+            <button>Walls</button>
+            <button>Toon</button>
+            <button>Goal</button>
+          </div>
         </div>
       </div>
     </div>

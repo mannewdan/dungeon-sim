@@ -21,6 +21,10 @@
 
   & h3 {
     margin-bottom: 6px;
+    text-align: center;
+  }
+  & hr {
+    width: 100%;
   }
 
   .light & {
@@ -59,7 +63,6 @@
   }
 
   &__size {
-    text-align: center;
     width: 100%;
 
     @media (min-width: $bp-medium) {
@@ -77,16 +80,30 @@
       border-bottom: 1px solid $white;
     }
   }
-  &__toon {
-    text-align: center;
+  &__right-container {
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__toon {
     &--selector {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 250px;
+      max-width: 175px;
       margin: 0 auto;
+    }
+  }
+  &__edit {
+    &--buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      @media (min-width: $bp-medium) {
+        flex-direction: column;
+      }
     }
   }
 
