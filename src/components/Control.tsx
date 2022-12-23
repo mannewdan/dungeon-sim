@@ -36,14 +36,18 @@ export function Control({
       <div className="control__size">
         <h3>Grid Size</h3>
         <div className="control__size--buttons">{sizeButtons}</div>
+        <button className="control--size-reset-button" onClick={resetGrid}>
+          Reset Grid
+        </button>
       </div>
-      <button className="control--size-reset-button" onClick={resetGrid}>
-        Reset Grid
-      </button>
+
       <div className="control__toon">
-        <button onClick={() => incrementToonIndex(-1)}>{"<"}</button>
-        <span>{toonName}</span>
-        <button onClick={() => incrementToonIndex(1)}>{">"}</button>
+        <h3>Character</h3>
+        <div className="control__toon--selector">
+          <button onClick={() => incrementToonIndex(-1)}>{"<"}</button>
+          <span>{toonName}</span>
+          <button onClick={() => incrementToonIndex(1)}>{">"}</button>
+        </div>
       </div>
     </div>
   );

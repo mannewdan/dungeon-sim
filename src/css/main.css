@@ -45,6 +45,19 @@ img {
   color: hsl(0deg, 0%, 96%);
   border-radius: 8px;
   align-self: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media (min-width: 800px) {
+  .control {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.control h3 {
+  margin-bottom: 6px;
 }
 .light .control {
   background-color: #786fa6;
@@ -76,25 +89,32 @@ img {
 }
 .control__size {
   text-align: center;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid hsl(0deg, 0%, 96%);
+  width: 100%;
 }
-.control__size h3 {
-  margin-bottom: 6px;
+@media (min-width: 800px) {
+  .control__size {
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsl(0deg, 0%, 96%);
+  }
 }
 .control__size--buttons {
   display: grid;
   gap: 4px;
   grid-template-columns: 1fr 1fr;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid hsl(0deg, 0%, 96%);
 }
 .control__toon {
-  padding-top: 10px;
-  margin-top: 10px;
-  border-top: 1px solid hsl(0deg, 0%, 96%);
+  text-align: center;
+  width: 100%;
+}
+.control__toon--selector {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 250px;
+  margin: 0 auto;
 }
 .control--size-reset-button {
   width: 100%;
