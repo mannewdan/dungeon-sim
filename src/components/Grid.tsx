@@ -7,9 +7,15 @@ type GridProps = {
   grid: Array<Array<number>>;
   writeGrid: (w: number, h: number, newValue: number) => void;
   currentToon: string;
+  currentEditIndex: number;
 };
 
-export function Grid({ grid, writeGrid, currentToon }: GridProps) {
+export function Grid({
+  grid,
+  writeGrid,
+  currentToon,
+  currentEditIndex,
+}: GridProps) {
   const [paintType, setPaintType] = React.useState(-1);
   const [mouseIsHeld] = useMouseStatus();
 

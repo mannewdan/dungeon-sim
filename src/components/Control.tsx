@@ -6,6 +6,8 @@ type ControlProps = {
   toonOptions: Array<string>;
   currentToonIndex: number;
   incrementToonIndex: (change: number) => void;
+  currentEditIndex: number;
+  selectNewEditIndex: (index: number) => void;
 };
 
 export function Control({
@@ -16,6 +18,8 @@ export function Control({
   toonOptions,
   currentToonIndex,
   incrementToonIndex,
+  currentEditIndex,
+  selectNewEditIndex,
 }: ControlProps) {
   //render
   const sizeButtons = sizeOptions.map((item, index) => {
@@ -56,9 +60,24 @@ export function Control({
         <div className="control__edit">
           <h3>Edit Mode</h3>
           <div className="control__edit--buttons">
-            <button>Walls</button>
-            <button>Toon</button>
-            <button>Goal</button>
+            <button
+              className={currentEditIndex === 0 ? "active" : ""}
+              onClick={() => selectNewEditIndex(0)}
+            >
+              Walls
+            </button>
+            <button
+              className={currentEditIndex === 1 ? "active" : ""}
+              onClick={() => selectNewEditIndex(1)}
+            >
+              Toon
+            </button>
+            <button
+              className={currentEditIndex === 2 ? "active" : ""}
+              onClick={() => selectNewEditIndex(2)}
+            >
+              Goal
+            </button>
           </div>
         </div>
       </div>

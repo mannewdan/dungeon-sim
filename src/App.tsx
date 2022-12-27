@@ -16,6 +16,7 @@ function App() {
   const { toggleDark, toggleDebug } = useDungeonContext();
   const [currentSizeIndex, setCurrentSizeIndex] = React.useState(0);
   const [currentToonIndex, setCurrentToonIndex] = React.useState(0);
+  const [currentEditIndex, setCurrentEditIndex] = React.useState(0);
   const [grid, setGrid] = React.useState(() => {
     const grid = loadGrid(0);
     return grid ? grid : gridData[0].grid;
@@ -29,7 +30,7 @@ function App() {
       index > sizeOptions.length - 1 ||
       index > gridData.length - 1
     ) {
-      console.log("An invalid index was given to selectNewIndex");
+      console.log("An invalid index was given to selectNewSizeIndex");
       return;
     }
 
@@ -46,6 +47,15 @@ function App() {
       if (prev < 0) prev = toonOptions.length - 1;
       return prev;
     });
+  }
+  function selectNewEditIndex(index: number) {
+    //check index
+    if (index < 0 || index > 2) {
+      console.log("An invalid index was given to selectNewEditIndex");
+      return;
+    }
+
+    setCurrentEditIndex(index);
   }
   function writeGrid(h: number, w: number, newValue: number) {
     if (!inBounds(w, h, grid)) return -1;
@@ -101,6 +111,7 @@ function App() {
           grid={grid}
           writeGrid={writeGrid}
           currentToon={toonOptions[currentToonIndex]}
+          currentEditIndex={currentEditIndex}
         />
         <Control
           sizeOptions={sizeOptions}
@@ -110,6 +121,8 @@ function App() {
           toonOptions={toonOptions}
           currentToonIndex={currentToonIndex}
           incrementToonIndex={incrementToonIndex}
+          currentEditIndex={currentEditIndex}
+          selectNewEditIndex={selectNewEditIndex}
         />
       </div>
 
