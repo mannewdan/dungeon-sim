@@ -21,6 +21,10 @@ export function Grid({
 
   //functions
   function toggleWall(h: number, w: number) {
+    if (grid[h][w] === 2 || grid[h][w] === 3) {
+      //walls can't replace entities
+      return;
+    }
     if (h < 0 || h > grid.length - 1 || w < 0 || w > grid[0].length - 1) {
       console.log("Invalid coordinates passed to toggleWall: " + h + ", " + w);
       return;
@@ -85,6 +89,10 @@ export function Grid({
           }}
           paint={() => {
             if (!mouseIsHeld || paintType < 0) return;
+            if (grid[h][w] === 2 || grid[h][w] === 3) {
+              //walls can't replace entities
+              return;
+            }
             writeGrid(h, w, paintType);
           }}
           currentToon={currentToon}
