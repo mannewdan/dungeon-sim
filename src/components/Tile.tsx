@@ -3,16 +3,20 @@ import { useDungeonContext } from "../context/DungeonContext";
 
 type TileProps = {
   type: number;
+  currentEditIndex: number;
   coords: { x: number; y: number };
   toggleWall: (e: React.SyntheticEvent) => void;
+  setEntity: (e: React.SyntheticEvent) => void;
   paint: () => void;
   currentToon: string;
 };
 
 export function Tile({
   type,
+  currentEditIndex,
   coords,
   toggleWall,
+  setEntity,
   paint,
   currentToon,
 }: TileProps) {
@@ -32,7 +36,11 @@ export function Tile({
   const toonActive = type === 2 ? "active" : "";
   const goalActive = type === 3 ? "active" : "";
   return (
-    <div className="grid__tile" onMouseDown={toggleWall} onMouseEnter={paint}>
+    <div
+      className="grid__tile"
+      onMouseDown={currentEditIndex === 0 ? toggleWall : setEntity}
+      onMouseEnter={paint}
+    >
       <div className="grid__tile--ground"></div>
       <div
         className={`grid__tile--wall ${wallActive}`}

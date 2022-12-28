@@ -30,6 +30,32 @@ export function Grid({
     setPaintType(newValue);
     writeGrid(h, w, newValue);
   }
+  function setEntity(h: number, w: number, type: number) {
+    if (type !== 2 && type !== 3) {
+      console.log("Invalid entity type: " + type);
+      return;
+    }
+    if (grid[h][w] === 2 || grid[h][w] === 3) {
+      //entities can't replace other entities
+      return;
+    }
+    if (h < 0 || h > grid.length - 1 || w < 0 || w > grid[0].length - 1) {
+      console.log("Invalid coordinates passed to setEntity: " + h + ", " + w);
+      return;
+    }
+
+    //clear the original entity
+    for (let y = 0; y < grid.length; y++) {
+      for (let x = 0; x < grid[0].length; x++) {
+        if (grid[y][x] === type) {
+          writeGrid(y, x, 0);
+        }
+      }
+    }
+
+    //set the new entity
+    writeGrid(h, w, type);
+  }
   React.useEffect(() => {
     if (!mouseIsHeld) setPaintType(-1);
   }, [mouseIsHeld]);
@@ -43,11 +69,19 @@ export function Grid({
         <Tile
           key={i}
           type={grid[h][w]}
+          currentEditIndex={currentEditIndex}
           coords={wallCoordinates(w, h, grid)}
           toggleWall={(e: React.SyntheticEvent) => {
             //prevent copy-drag and text selection
             if (e.preventDefault) e.preventDefault();
             toggleWall(h, w);
+          }}
+          setEntity={(e: React.SyntheticEvent) => {
+            if (e.preventDefault) e.preventDefault();
+            const t =
+              currentEditIndex === 1 ? 2 : currentEditIndex === 2 ? 3 : 0;
+
+            setEntity(h, w, t);
           }}
           paint={() => {
             if (!mouseIsHeld || paintType < 0) return;
