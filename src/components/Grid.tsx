@@ -1,5 +1,5 @@
 import { Tile } from "./Tile";
-import { wallCoordinates } from "../util/textureCoordinates";
+import { wallCoordinates, inBounds } from "../util/textureCoordinates";
 import React from "react";
 import { useMouseStatus } from "../hooks/useMouseStatus";
 
@@ -25,7 +25,7 @@ export function Grid({
       //walls can't replace entities
       return;
     }
-    if (h < 0 || h > grid.length - 1 || w < 0 || w > grid[0].length - 1) {
+    if (!inBounds(w, h, grid)) {
       console.log("Invalid coordinates passed to toggleWall: " + h + ", " + w);
       return;
     }
@@ -43,7 +43,7 @@ export function Grid({
       //entities can't replace other entities
       return;
     }
-    if (h < 0 || h > grid.length - 1 || w < 0 || w > grid[0].length - 1) {
+    if (!inBounds(w, h, grid)) {
       console.log("Invalid coordinates passed to setEntity: " + h + ", " + w);
       return;
     }
