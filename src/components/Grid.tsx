@@ -2,6 +2,7 @@ import { Tile } from "./Tile";
 import { wallCoordinates, inBounds } from "../util/textureCoordinates";
 import React from "react";
 import { useMouseStatus } from "../hooks/useMouseStatus";
+import { buildPath } from "../util/buildPath";
 
 type GridProps = {
   grid: Array<Array<number>>;
@@ -64,6 +65,8 @@ export function Grid({
     if (!mouseIsHeld) setPaintType(-1);
   }, [mouseIsHeld]);
 
+  const path = buildPath(grid, false);
+
   //render
   const tileElements = [];
   let i = 0;
@@ -73,6 +76,7 @@ export function Grid({
         <Tile
           key={i}
           type={grid[h][w]}
+          isPath={!!path.find((item) => item.w === w && item.h === h)}
           currentEditIndex={currentEditIndex}
           coords={wallCoordinates(w, h, grid)}
           toggleWall={(e: React.SyntheticEvent) => {

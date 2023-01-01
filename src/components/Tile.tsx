@@ -3,6 +3,7 @@ import { useDungeonContext } from "../context/DungeonContext";
 
 type TileProps = {
   type: number;
+  isPath: boolean;
   currentEditIndex: number;
   coords: { x: number; y: number };
   toggleWall: (e: React.SyntheticEvent) => void;
@@ -13,6 +14,7 @@ type TileProps = {
 
 export function Tile({
   type,
+  isPath,
   currentEditIndex,
   coords,
   toggleWall,
@@ -37,7 +39,7 @@ export function Tile({
   const goalActive = type === 3 ? "active" : "";
   return (
     <div
-      className="grid__tile"
+      className={`grid__tile ${isPath ? "path" : ""}`}
       onMouseDown={currentEditIndex === 0 ? toggleWall : setEntity}
       onMouseEnter={paint}
     >
