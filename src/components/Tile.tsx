@@ -5,7 +5,8 @@ type TileProps = {
   type: number;
   isPath: boolean;
   currentEditIndex: number;
-  coords: { x: number; y: number };
+  texCoords: { x: number; y: number };
+  gridCoords: { h: number; w: number };
   toggleWall: (e: React.SyntheticEvent) => void;
   setEntity: (e: React.SyntheticEvent) => void;
   paint: () => void;
@@ -16,14 +17,15 @@ export function Tile({
   type,
   isPath,
   currentEditIndex,
-  coords,
+  texCoords,
+  gridCoords,
   toggleWall,
   setEntity,
   paint,
   currentToon,
 }: TileProps) {
-  const posX = (coords.x * 100) / 7;
-  const posY = 100 - (coords.y * 100) / 7;
+  const posX = (texCoords.x * 100) / 7;
+  const posY = 100 - (texCoords.y * 100) / 7;
   const [savedCoords, setSavedCoords] = React.useState({ posX: 0, posY: 0 });
 
   //update coords only if type is "wall"
@@ -64,7 +66,9 @@ export function Tile({
         }}
       ></div>
 
-      {debug && <span className="debug">{type}</span>}
+      {debug && (
+        <span className="debug">{gridCoords.w + ", " + gridCoords.h}</span>
+      )}
     </div>
   );
 }

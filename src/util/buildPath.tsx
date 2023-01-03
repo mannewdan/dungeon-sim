@@ -48,7 +48,7 @@ export function buildPath(
     //identify the lowest l (best path candidate)
     const currentNode = openList.reduce((lowest, node): Node => {
       if (node.l < lowest.l) return node;
-      if (node.k < lowest.k) return node;
+      else if (node.l === lowest.l && node.k < lowest.k) return node;
       return lowest;
     }, openList[0]);
 

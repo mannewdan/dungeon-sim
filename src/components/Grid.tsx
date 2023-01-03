@@ -78,7 +78,8 @@ export function Grid({
           type={grid[h][w]}
           isPath={!!path.find((item) => item.w === w && item.h === h)}
           currentEditIndex={currentEditIndex}
-          coords={wallCoordinates(w, h, grid)}
+          texCoords={wallCoordinates(w, h, grid)}
+          gridCoords={{ h, w }}
           toggleWall={(e: React.SyntheticEvent) => {
             //prevent copy-drag and text selection
             if (e.preventDefault) e.preventDefault();
