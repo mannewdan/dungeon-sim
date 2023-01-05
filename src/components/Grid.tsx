@@ -9,6 +9,7 @@ type GridProps = {
   writeGrid: (w: number, h: number, newValue: number) => void;
   currentToon: string;
   currentEditIndex: number;
+  allowDiagonals: boolean;
 };
 
 export function Grid({
@@ -16,6 +17,7 @@ export function Grid({
   writeGrid,
   currentToon,
   currentEditIndex,
+  allowDiagonals,
 }: GridProps) {
   const [paintType, setPaintType] = React.useState(-1);
   const [mouseIsHeld] = useMouseStatus();
@@ -65,7 +67,7 @@ export function Grid({
     if (!mouseIsHeld) setPaintType(-1);
   }, [mouseIsHeld]);
 
-  const path = buildPath(grid, false);
+  const path = buildPath(grid, allowDiagonals);
 
   //render
   const tileElements = [];

@@ -8,6 +8,8 @@ type ControlProps = {
   incrementToonIndex: (change: number) => void;
   currentEditIndex: number;
   selectNewEditIndex: (index: number) => void;
+  allowDiagonals: boolean;
+  toggleAllowDiagonals: () => void;
 };
 
 export function Control({
@@ -20,6 +22,8 @@ export function Control({
   incrementToonIndex,
   currentEditIndex,
   selectNewEditIndex,
+  allowDiagonals,
+  toggleAllowDiagonals,
 }: ControlProps) {
   //render
   const sizeButtons = sizeOptions.map((item, index) => {
@@ -55,7 +59,14 @@ export function Control({
           </div>
         </div>
 
-        <hr></hr>
+        <div className="control__diagonals">
+          <button
+            className={allowDiagonals ? "active" : ""}
+            onClick={toggleAllowDiagonals}
+          >
+            Allow Diagonal Paths
+          </button>
+        </div>
 
         <div className="control__edit">
           <h3>Edit Mode</h3>

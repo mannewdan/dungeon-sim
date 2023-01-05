@@ -17,6 +17,7 @@ function App() {
   const [currentSizeIndex, setCurrentSizeIndex] = React.useState(0);
   const [currentToonIndex, setCurrentToonIndex] = React.useState(0);
   const [currentEditIndex, setCurrentEditIndex] = React.useState(0);
+  const [allowDiagonals, setAllowDiagonals] = React.useState(false);
   const [grid, setGrid] = React.useState(() => {
     const grid = loadGrid(0);
     return grid ? grid : gridData[0].grid;
@@ -56,6 +57,9 @@ function App() {
     }
 
     setCurrentEditIndex(index);
+  }
+  function toggleAllowDiagonals() {
+    setAllowDiagonals((prev) => !prev);
   }
   function writeGrid(h: number, w: number, newValue: number) {
     if (!inBounds(w, h, grid)) return -1;
@@ -112,6 +116,7 @@ function App() {
           writeGrid={writeGrid}
           currentToon={toonOptions[currentToonIndex]}
           currentEditIndex={currentEditIndex}
+          allowDiagonals={allowDiagonals}
         />
         <Control
           sizeOptions={sizeOptions}
@@ -123,6 +128,8 @@ function App() {
           incrementToonIndex={incrementToonIndex}
           currentEditIndex={currentEditIndex}
           selectNewEditIndex={selectNewEditIndex}
+          allowDiagonals={allowDiagonals}
+          toggleAllowDiagonals={toggleAllowDiagonals}
         />
       </div>
 

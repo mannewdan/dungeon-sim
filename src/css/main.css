@@ -60,9 +60,6 @@ img {
   margin-bottom: 6px;
   text-align: center;
 }
-.control hr {
-  width: 100%;
-}
 .light .control {
   background-color: #786fa6;
 }
@@ -93,6 +90,7 @@ img {
 }
 .control__size {
   width: 100%;
+  align-self: center;
 }
 @media (min-width: 800px) {
   .control__size {
@@ -114,12 +112,22 @@ img {
   flex-direction: column;
   justify-content: space-between;
 }
+.control__toon {
+  padding-bottom: 10px;
+}
 .control__toon--selector {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 175px;
   margin: 0 auto;
+}
+.control__diagonals {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid hsl(0deg, 0%, 96%);
 }
 .control__edit--buttons {
   display: flex;
