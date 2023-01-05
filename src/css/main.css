@@ -149,9 +149,22 @@ img {
   background-color: var(--background-tile);
   position: relative;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.grid__tile.path {
+.grid__tile--path {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
   background-color: #ce4141;
+  -webkit-animation: 125ms both shrink;
+          animation: 125ms both shrink;
+}
+.grid__tile--path.active {
+  -webkit-animation: 125ms both pulse;
+          animation: 125ms both pulse;
 }
 .grid__tile--ground {
   position: absolute;
@@ -173,7 +186,7 @@ img {
   -webkit-animation: 125ms both pulse;
           animation: 125ms both pulse;
 }
-.grid__tile--toon, .grid__tile--goal {
+.grid__tile--toon-holder, .grid__tile--goal {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -181,9 +194,16 @@ img {
   -webkit-animation: 125ms both shrink;
           animation: 125ms both shrink;
 }
-.grid__tile--toon.active, .grid__tile--goal.active {
+.grid__tile--toon-holder.active, .grid__tile--goal.active {
   -webkit-animation: 125ms both pulse;
           animation: 125ms both pulse;
+}
+.grid__tile--toon-sprite {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: 100%;
+  transform: translateX(-5%) translateY(-5%);
 }
 .grid__tile .debug {
   position: absolute;

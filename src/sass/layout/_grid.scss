@@ -18,9 +18,22 @@
 
     position: relative;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    &.path {
+    &--path {
+      position: absolute;
+      height: 90%;
+      width: 90%;
+      border-radius: 10px;
       background-color: $tile-path;
+
+      animation: 125ms both shrink;
+
+      &.active {
+        animation: 125ms both pulse;
+      }
     }
     &--ground {
       position: absolute;
@@ -42,7 +55,7 @@
         animation: 125ms both pulse;
       }
     }
-    &--toon,
+    &--toon-holder,
     &--goal {
       position: absolute;
       height: 100%;
@@ -54,6 +67,13 @@
       &.active {
         animation: 125ms both pulse;
       }
+    }
+    &--toon-sprite {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-size: 100%;
+      transform: translateX(-5%) translateY(-5%);
     }
 
     & .debug {

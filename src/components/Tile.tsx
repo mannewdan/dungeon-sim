@@ -41,10 +41,11 @@ export function Tile({
   const goalActive = type === 3 ? "active" : "";
   return (
     <div
-      className={`grid__tile ${isPath ? "path" : ""}`}
+      className={`grid__tile`}
       onMouseDown={currentEditIndex === 0 ? toggleWall : setEntity}
       onMouseEnter={paint}
     >
+      <div className={`grid__tile--path ${isPath ? "active" : ""}`}></div>
       <div className="grid__tile--ground"></div>
       <div
         className={`grid__tile--wall ${wallActive}`}
@@ -53,12 +54,14 @@ export function Tile({
           backgroundPositionY: `${savedCoords.posY}%`,
         }}
       ></div>
-      <div
-        className={`grid__tile--toon ${toonActive}`}
-        style={{
-          backgroundImage: `url(src/assets/${currentToon}.svg)`,
-        }}
-      ></div>
+      <div className={`grid__tile--toon-holder ${toonActive}`}>
+        <div
+          className="grid__tile--toon-sprite"
+          style={{
+            backgroundImage: `url(src/assets/${currentToon}.svg)`,
+          }}
+        ></div>
+      </div>
       <div
         className={`grid__tile--goal ${goalActive}`}
         style={{
