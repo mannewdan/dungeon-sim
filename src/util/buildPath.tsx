@@ -142,7 +142,7 @@ function getAdjacentNodes(
   }
   //southwest
   if (
-    (n || w) &&
+    (s || w) &&
     inBounds(node.w - 1, node.h + 1, grid) &&
     grid[node.h + 1][node.w - 1] !== 1
   ) {
@@ -150,7 +150,7 @@ function getAdjacentNodes(
   }
   //southeast
   if (
-    (n || w) &&
+    (s || e) &&
     inBounds(node.w + 1, node.h + 1, grid) &&
     grid[node.h + 1][node.w + 1] !== 1
   ) {
