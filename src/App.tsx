@@ -90,7 +90,10 @@ function App() {
   //load
   function loadGrid(index: number) {
     const data = localStorage.getItem(`dungeon-grid-${index}`);
-    if (!data) return null;
+    if (!data) {
+      const freshGrid = gridData[index].grid;
+      return freshGrid ? freshGrid : null;
+    }
 
     const grid = JSON.parse(data) as Array<Array<number>>;
     if (

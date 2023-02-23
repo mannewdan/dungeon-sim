@@ -18,7 +18,7 @@ export function useDungeonContext() {
 export function DungeonContextProvider(props: DungeonContextProps) {
   const [dark, setDark] = React.useState<boolean>(() => {
     const settings = loadSettings();
-    return settings ? settings.theme : false;
+    return settings ? settings.theme : true;
   });
   const [debug, setDebug] = React.useState<boolean>(() => {
     const settings = loadSettings();
