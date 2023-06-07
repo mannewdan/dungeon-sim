@@ -58,14 +58,14 @@ export function Tile({
         <div
           className="grid__tile--toon-sprite"
           style={{
-            backgroundImage: `url(src/assets/${currentToon}.svg)`,
+            backgroundImage: `url(images/${currentToon}.svg)`,
           }}
         ></div>
       </div>
       <div
         className={`grid__tile--goal ${goalActive}`}
         style={{
-          backgroundImage: "url(src/assets/treasure.svg)",
+          backgroundImage: "url(images/treasure.svg)",
         }}
       ></div>
 

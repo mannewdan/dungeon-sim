@@ -141,7 +141,9 @@ function App() {
         Toggle Debug
       </button>
       <br></br>
+      {/*      
       <button onClick={toggleDark}>Toggle Dark</button>
+      */}
       {/* end debug */}
     </main>
   );
