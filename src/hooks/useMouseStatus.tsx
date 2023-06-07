@@ -14,7 +14,7 @@ export function useMouseStatus() {
     return () => {
       window.removeEventListener("mousedown", hold);
       window.removeEventListener("mouseup", release);
-      window.addEventListener("blur", release);
+      window.removeEventListener("blur", release);
     };
   }, []);
 
